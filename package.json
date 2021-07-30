@@ -1,0 +1,114 @@
+{
+  "name": "stormalf-term",
+  "displayName": "stormalf terminal",
+  "description": "stormalf terminal including some linux shells profiles",
+  "version": "0.0.1",
+  "publisher": "stormalf",
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.58.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onCommand:stormalf-term.helloWorld",
+    "onCommand:stormalf-term.createAndSend",
+    "onCommand:stormalf-term.createTerminal",
+    "onCommand:stormalf-term.createTerminalHideFromUser",
+    "onCommand:stormalf-term.createZshLoginShell",
+    "onCommand:stormalf-term.dispose",
+    "onCommand:stormalf-term.hide",
+    "onCommand:stormalf-term.processId",
+    "onCommand:stormalf-term.show",
+    "onCommand:stormalf-term.showPreserveFocus",
+    "onTerminalProfile:stormalf-term.python-profile",
+    "onTerminalProfile:stormalf-term.node-profile",
+    "onTerminalProfile:stormalf-term.fish-profile"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "stormalf-term.helloWorld",
+        "title": "stormalf-term"
+      },
+      {
+        "command": "stormalf-term.createAndSend",
+        "title": "stormalf-term: Create Terminal and remote SSH connection directly"
+      },
+      {
+        "command": "stormalf-term.createTerminal",
+        "title": "stormalf-term: Create Terminal"
+      },
+      {
+        "command": "stormalf-term.createTerminalHideFromUser",
+        "title": "stormalf-term: Create Terminal (hideFromUser)"
+      },
+      {
+        "command": "stormalf-term.createZshLoginShell",
+        "title": "stormalf-term: Create Terminal (zsh login shell)"
+      },
+      {
+        "command": "stormalf-term.dispose",
+        "title": "stormalf-term: Dispose"
+      },
+      {
+        "command": "stormalf-term.hide",
+        "title": "stormalf-term: Hide"
+      },
+      {
+        "command": "stormalf-term.processId",
+        "title": "stormalf-term: Get process ID"
+      },
+      {
+        "command": "stormalf-term.show",
+        "title": "stormalf-term: Show"
+      },
+      {
+        "command": "stormalf-term.showPreserveFocus",
+        "title": "stormalf-term: Show (preserving focus)"
+      }
+    ],
+    "terminal": {
+      "profiles": [
+        {
+          "id": "stormalf-term.python-profile",
+          "icon": "terminal",
+          "title": "stormalf-term-python3"
+        },
+        {
+          "id": "stormalf-term.node-profile",
+          "icon": "terminal",
+          "title": "stormalf-term-node"
+        },
+        {
+          "id": "stormalf-term.fish-profile",
+          "icon": "terminal",
+          "title": "stormalf-term-fish"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "node ./dist/test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.58.0",
+    "@types/glob": "^7.1.3",
+    "@types/mocha": "^8.2.2",
+    "@types/node": "14.x",
+    "eslint": "^7.27.0",
+    "@typescript-eslint/eslint-plugin": "^4.26.0",
+    "@typescript-eslint/parser": "^4.26.0",
+    "glob": "^7.1.7",
+    "mocha": "^8.4.0",
+    "typescript": "^4.3.2",
+    "vscode-test": "^1.5.2"
+  }
+}
