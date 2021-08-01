@@ -12,78 +12,78 @@
     "Other"
   ],
   "activationEvents": [
-    "onCommand:stormalf-term.helloWorld",
-    "onCommand:stormalf-term.createAndSend",
-    "onCommand:stormalf-term.createTerminal",
-    "onCommand:stormalf-term.createTerminalHideFromUser",
-    "onCommand:stormalf-term.createZshLoginShell",
-    "onCommand:stormalf-term.dispose",
-    "onCommand:stormalf-term.hide",
-    "onCommand:stormalf-term.processId",
-    "onCommand:stormalf-term.show",
-    "onCommand:stormalf-term.showPreserveFocus",
-    "onTerminalProfile:stormalf-term.python-profile",
-    "onTerminalProfile:stormalf-term.node-profile",
-    "onTerminalProfile:stormalf-term.fish-profile"
+    "onCommand:vscode-stormalf-term.helloWorld",
+    "onCommand:vscode-stormalf-term.createAndSend",
+    "onCommand:vscode-stormalf-term.createTerminal",
+    "onCommand:vscode-stormalf-term.createTerminalHideFromUser",
+    "onCommand:vscode-stormalf-term.createZshLoginShell",
+    "onCommand:vscode-stormalf-term.dispose",
+    "onCommand:vscode-stormalf-term.hide",
+    "onCommand:vscode-stormalf-term.processId",
+    "onCommand:vscode-stormalf-term.show",
+    "onCommand:vscode-stormalf-term.showPreserveFocus",
+    "onTerminalProfile:vscode-stormalf-term.python-profile",
+    "onTerminalProfile:vscode-stormalf-term.node-profile",
+    "onTerminalProfile:vscode-stormalf-term.fish-profile"
   ],
   "main": "./dist/extension.js",
   "contributes": {
     "commands": [
       {
-        "command": "stormalf-term.helloWorld",
+        "command": "vscode-stormalf-term.helloWorld",
         "title": "stormalf-term"
       },
       {
-        "command": "stormalf-term.createAndSend",
+        "command": "vscode-stormalf-term.createAndSend",
         "title": "stormalf-term: Create Terminal and remote SSH connection directly"
       },
       {
-        "command": "stormalf-term.createTerminal",
+        "command": "vscode-stormalf-term.createTerminal",
         "title": "stormalf-term: Create Terminal"
       },
       {
-        "command": "stormalf-term.createTerminalHideFromUser",
+        "command": "vscode-stormalf-term.createTerminalHideFromUser",
         "title": "stormalf-term: Create Terminal (hideFromUser)"
       },
       {
-        "command": "stormalf-term.createZshLoginShell",
+        "command": "vscode-stormalf-term.createZshLoginShell",
         "title": "stormalf-term: Create Terminal (zsh login shell)"
       },
       {
-        "command": "stormalf-term.dispose",
+        "command": "vscode-stormalf-term.dispose",
         "title": "stormalf-term: Dispose"
       },
       {
-        "command": "stormalf-term.hide",
+        "command": "vscode-stormalf-term.hide",
         "title": "stormalf-term: Hide"
       },
       {
-        "command": "stormalf-term.processId",
+        "command": "vscode-stormalf-term.processId",
         "title": "stormalf-term: Get process ID"
       },
       {
-        "command": "stormalf-term.show",
+        "command": "vscode-stormalf-term.show",
         "title": "stormalf-term: Show"
       },
       {
-        "command": "stormalf-term.showPreserveFocus",
+        "command": "vscode-stormalf-term.showPreserveFocus",
         "title": "stormalf-term: Show (preserving focus)"
       }
     ],
     "terminal": {
       "profiles": [
         {
-          "id": "stormalf-term.python-profile",
+          "id": "vscode-stormalf-term.python-profile",
           "icon": "terminal",
           "title": "stormalf-term-python3"
         },
         {
-          "id": "stormalf-term.node-profile",
+          "id": "vscode-stormalf-term.node-profile",
           "icon": "terminal",
           "title": "stormalf-term-node"
         },
         {
-          "id": "stormalf-term.fish-profile",
+          "id": "vscode-stormalf-term.fish-profile",
           "icon": "terminal",
           "title": "stormalf-term-fish"
         }

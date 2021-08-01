@@ -26,14 +26,19 @@ export function myterm(context: vscode.ExtensionContext) {
 
   // vscode.window.createTerminal
   context.subscriptions.push(
-    vscode.commands.registerCommand("stormalf-term.createTerminal", () => {
-      vscode.window.createTerminal(`stormalf-term Terminal #${NEXT_TERM_ID++}`);
-      vscode.window.showInformationMessage("stormalf-term Terminal created!");
-    })
+    vscode.commands.registerCommand(
+      "vscode-stormalf-term.createTerminal",
+      () => {
+        vscode.window.createTerminal(
+          `stormalf-term Terminal #${NEXT_TERM_ID++}`
+        );
+        vscode.window.showInformationMessage("stormalf-term Terminal created!");
+      }
+    )
   );
   context.subscriptions.push(
     vscode.commands.registerCommand(
-      "stormalf-term.createTerminalHideFromUser",
+      "vscode-stormalf-term.createTerminalHideFromUser",
       () => {
         vscode.window.createTerminal({
           name: `stormalf-term Terminal #${NEXT_TERM_ID++}`,
@@ -43,50 +48,56 @@ export function myterm(context: vscode.ExtensionContext) {
     )
   );
   context.subscriptions.push(
-    vscode.commands.registerCommand("stormalf-term.createAndSend", async () => {
-      const terminal = vscode.window.createTerminal(
-        `stormalf-term Terminal #${NEXT_TERM_ID++}`
-      );
-      let sshlogin = await vscode.window.showInputBox({
-        value: "",
-        prompt: "SSH Login",
-      });
-      if (sshlogin) {
-        let sshhost = await vscode.window.showInputBox({
-          value: "LOCALHOST",
-          prompt: "SSH host",
+    vscode.commands.registerCommand(
+      "vscode-stormalf-term.createAndSend",
+      async () => {
+        const terminal = vscode.window.createTerminal(
+          `stormalf-term Terminal #${NEXT_TERM_ID++}`
+        );
+        let sshlogin = await vscode.window.showInputBox({
+          value: "",
+          prompt: "SSH Login",
         });
-        if (sshhost) {
-          let sshport = await vscode.window.showInputBox({
-            value: "22",
-            prompt: "SSH port",
+        if (sshlogin) {
+          let sshhost = await vscode.window.showInputBox({
+            value: "LOCALHOST",
+            prompt: "SSH host",
           });
-          if (sshport) {
-            vscode.window.showInformationMessage(
-              `${sshlogin}@${sshhost} ${sshport}`
-            );
-            terminal.sendText(`ssh ${sshlogin}@${sshhost} -p ${sshport}`);
+          if (sshhost) {
+            let sshport = await vscode.window.showInputBox({
+              value: "22",
+              prompt: "SSH port",
+            });
+            if (sshport) {
+              vscode.window.showInformationMessage(
+                `${sshlogin}@${sshhost} ${sshport}`
+              );
+              terminal.sendText(`ssh ${sshlogin}@${sshhost} -p ${sshport}`);
+            }
           }
         }
+        //terminal.sendText("echo 'Sent text immediately after creating'");
+        //terminal.sendText("ssh sgomes@PUB400.COM -p 2222");
+        //terminal.sendText("ls");
       }
-      //terminal.sendText("echo 'Sent text immediately after creating'");
-      //terminal.sendText("ssh sgomes@PUB400.COM -p 2222");
-      //terminal.sendText("ls");
-    })
+    )
   );
   context.subscriptions.push(
-    vscode.commands.registerCommand("stormalf-term.createZshLoginShell", () => {
-      vscode.window.createTerminal(
-        `stormalf-term Terminal #${NEXT_TERM_ID++}`,
-        "zsh",
-        ["-l"]
-      );
-    })
+    vscode.commands.registerCommand(
+      "vscode-stormalf-term.createZshLoginShell",
+      () => {
+        vscode.window.createTerminal(
+          `stormalf-term Terminal #${NEXT_TERM_ID++}`,
+          "zsh",
+          ["-l"]
+        );
+      }
+    )
   );
 
   // Terminal.hide
   context.subscriptions.push(
-    vscode.commands.registerCommand("stormalf-term.hide", () => {
+    vscode.commands.registerCommand("vscode-stormalf-term.hide", () => {
       if (ensureTerminalExists()) {
         selectTerminal().then((terminal) => {
           if (terminal) {
@@ -99,7 +110,7 @@ export function myterm(context: vscode.ExtensionContext) {
 
   // Terminal.show
   context.subscriptions.push(
-    vscode.commands.registerCommand("stormalf-term.show", () => {
+    vscode.commands.registerCommand("vscode-stormalf-term.show", () => {
       if (ensureTerminalExists()) {
         selectTerminal().then((terminal) => {
           if (terminal) {
@@ -110,20 +121,23 @@ export function myterm(context: vscode.ExtensionContext) {
     })
   );
   context.subscriptions.push(
-    vscode.commands.registerCommand("stormalf-term.showPreserveFocus", () => {
-      if (ensureTerminalExists()) {
-        selectTerminal().then((terminal) => {
-          if (terminal) {
-            terminal.show(true);
-          }
-        });
+    vscode.commands.registerCommand(
+      "vscode-stormalf-term.showPreserveFocus",
+      () => {
+        if (ensureTerminalExists()) {
+          selectTerminal().then((terminal) => {
+            if (terminal) {
+              terminal.show(true);
+            }
+          });
+        }
       }
-    })
+    )
   );
 
   // Terminal.dispose
   context.subscriptions.push(
-    vscode.commands.registerCommand("stormalf-term.dispose", () => {
+    vscode.commands.registerCommand("vscode-stormalf-term.dispose", () => {
       if (ensureTerminalExists()) {
         selectTerminal().then((terminal) => {
           if (terminal) {
@@ -136,7 +150,7 @@ export function myterm(context: vscode.ExtensionContext) {
 
   // Terminal.processId
   context.subscriptions.push(
-    vscode.commands.registerCommand("stormalf-term.processId", () => {
+    vscode.commands.registerCommand("vscode-stormalf-term.processId", () => {
       selectTerminal().then((terminal) => {
         if (!terminal) {
           return;
@@ -167,7 +181,7 @@ export function myterm(context: vscode.ExtensionContext) {
 
   context.subscriptions.push(
     vscode.window.registerTerminalProfileProvider(
-      "stormalf-term.python-profile",
+      "vscode-stormalf-term.python-profile",
       {
         provideTerminalProfile(
           token: vscode.CancellationToken
@@ -185,7 +199,7 @@ export function myterm(context: vscode.ExtensionContext) {
 
   context.subscriptions.push(
     vscode.window.registerTerminalProfileProvider(
-      "stormalf-term.node-profile",
+      "vscode-stormalf-term.node-profile",
       {
         provideTerminalProfile(
           token: vscode.CancellationToken
@@ -204,7 +218,7 @@ export function myterm(context: vscode.ExtensionContext) {
   //fish terminal profile
   context.subscriptions.push(
     vscode.window.registerTerminalProfileProvider(
-      "stormalf-term.fish-profile",
+      "vscode-stormalf-term.fish-profile",
       {
         provideTerminalProfile(
           token: vscode.CancellationToken

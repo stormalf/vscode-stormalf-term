@@ -28,17 +28,17 @@ function myterm(context) {
         console.log(`Active terminal changed, name=${e ? e.name : "undefined"}`);
     });
     // vscode.window.createTerminal
-    context.subscriptions.push(vscode.commands.registerCommand("stormalf-term.createTerminal", () => {
+    context.subscriptions.push(vscode.commands.registerCommand("vscode-stormalf-term.createTerminal", () => {
         vscode.window.createTerminal(`stormalf-term Terminal #${NEXT_TERM_ID++}`);
         vscode.window.showInformationMessage("stormalf-term Terminal created!");
     }));
-    context.subscriptions.push(vscode.commands.registerCommand("stormalf-term.createTerminalHideFromUser", () => {
+    context.subscriptions.push(vscode.commands.registerCommand("vscode-stormalf-term.createTerminalHideFromUser", () => {
         vscode.window.createTerminal({
             name: `stormalf-term Terminal #${NEXT_TERM_ID++}`,
             hideFromUser: true,
         });
     }));
-    context.subscriptions.push(vscode.commands.registerCommand("stormalf-term.createAndSend", () => __awaiter(this, void 0, void 0, function* () {
+    context.subscriptions.push(vscode.commands.registerCommand("vscode-stormalf-term.createAndSend", () => __awaiter(this, void 0, void 0, function* () {
         const terminal = vscode.window.createTerminal(`stormalf-term Terminal #${NEXT_TERM_ID++}`);
         let sshlogin = yield vscode.window.showInputBox({
             value: "",
@@ -64,11 +64,11 @@ function myterm(context) {
         //terminal.sendText("ssh sgomes@PUB400.COM -p 2222");
         //terminal.sendText("ls");
     })));
-    context.subscriptions.push(vscode.commands.registerCommand("stormalf-term.createZshLoginShell", () => {
+    context.subscriptions.push(vscode.commands.registerCommand("vscode-stormalf-term.createZshLoginShell", () => {
         vscode.window.createTerminal(`stormalf-term Terminal #${NEXT_TERM_ID++}`, "zsh", ["-l"]);
     }));
     // Terminal.hide
-    context.subscriptions.push(vscode.commands.registerCommand("stormalf-term.hide", () => {
+    context.subscriptions.push(vscode.commands.registerCommand("vscode-stormalf-term.hide", () => {
         if (ensureTerminalExists()) {
             selectTerminal().then((terminal) => {
                 if (terminal) {
@@ -78,7 +78,7 @@ function myterm(context) {
         }
     }));
     // Terminal.show
-    context.subscriptions.push(vscode.commands.registerCommand("stormalf-term.show", () => {
+    context.subscriptions.push(vscode.commands.registerCommand("vscode-stormalf-term.show", () => {
         if (ensureTerminalExists()) {
             selectTerminal().then((terminal) => {
                 if (terminal) {
@@ -87,7 +87,7 @@ function myterm(context) {
             });
         }
     }));
-    context.subscriptions.push(vscode.commands.registerCommand("stormalf-term.showPreserveFocus", () => {
+    context.subscriptions.push(vscode.commands.registerCommand("vscode-stormalf-term.showPreserveFocus", () => {
         if (ensureTerminalExists()) {
             selectTerminal().then((terminal) => {
                 if (terminal) {
@@ -97,7 +97,7 @@ function myterm(context) {
         }
     }));
     // Terminal.dispose
-    context.subscriptions.push(vscode.commands.registerCommand("stormalf-term.dispose", () => {
+    context.subscriptions.push(vscode.commands.registerCommand("vscode-stormalf-term.dispose", () => {
         if (ensureTerminalExists()) {
             selectTerminal().then((terminal) => {
                 if (terminal) {
@@ -107,7 +107,7 @@ function myterm(context) {
         }
     }));
     // Terminal.processId
-    context.subscriptions.push(vscode.commands.registerCommand("stormalf-term.processId", () => {
+    context.subscriptions.push(vscode.commands.registerCommand("vscode-stormalf-term.processId", () => {
         selectTerminal().then((terminal) => {
             if (!terminal) {
                 return;
@@ -127,7 +127,7 @@ function myterm(context) {
         vscode.window.showInformationMessage(`Terminal, name: ${terminal.name} closed!`);
     });
     // vvv Proposed APIs below vvv
-    context.subscriptions.push(vscode.window.registerTerminalProfileProvider("stormalf-term.python-profile", {
+    context.subscriptions.push(vscode.window.registerTerminalProfileProvider("vscode-stormalf-term.python-profile", {
         provideTerminalProfile(token) {
             return {
                 options: {
@@ -137,7 +137,7 @@ function myterm(context) {
             };
         },
     }));
-    context.subscriptions.push(vscode.window.registerTerminalProfileProvider("stormalf-term.node-profile", {
+    context.subscriptions.push(vscode.window.registerTerminalProfileProvider("vscode-stormalf-term.node-profile", {
         provideTerminalProfile(token) {
             return {
                 options: {
@@ -148,7 +148,7 @@ function myterm(context) {
         },
     }));
     //fish terminal profile
-    context.subscriptions.push(vscode.window.registerTerminalProfileProvider("stormalf-term.fish-profile", {
+    context.subscriptions.push(vscode.window.registerTerminalProfileProvider("vscode-stormalf-term.fish-profile", {
         provideTerminalProfile(token) {
             return {
                 options: {
