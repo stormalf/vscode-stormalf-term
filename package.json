@@ -1,5 +1,5 @@
 {
-  "name": "stormalf-term",
+  "name": "vscode-stormalf-term",
   "displayName": "stormalf terminal",
   "description": "stormalf terminal including some linux shells profiles",
   "version": "0.0.1",
